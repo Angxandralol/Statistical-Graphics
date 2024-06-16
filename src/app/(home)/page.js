@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import styles from "./styles.module.css";
+import { extensionValidator } from "../../../utils/validator.js";
 
 export default function Home() {
   const [file, setFile] = useState();
@@ -13,7 +14,8 @@ export default function Home() {
           onSubmit={(e) => {
             e.preventDefault();
             if (!file) return;
-            console.log("Archivo subido!");
+            let validation = extensionValidator(file.name);
+            console.log(validation);
           }}
         >
           <i className={styles.ggfileadd}></i>
